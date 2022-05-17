@@ -11,19 +11,59 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  List books = [];
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    DBAdmin.db.getBooksRaw();
-    DBAdmin.db.getBooks();
-
-    // DBAdmin.db.insertBook();
-
+    getData();
   }
+
+  getData(){
+    DBAdmin.db.getBooks().then((value){
+      books = value;
+      setState(() {
+
+      });
+    });
+  }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Books"),
+      ),
+      body: ListView.builder(
+        itemCount: books.length,
+        itemBuilder: (BuildContext context, int index){
+          return ListTile(
+            title: Text(books[index]["title"]),
+          );
+        },
+      ),
+      // body: FutureBuilder(
+      //   future: DBAdmin.db.getBooksRaw(),
+      //   builder: (BuildContext context, AsyncSnapshot snap){
+      //     if(snap.hasData){
+      //       List bookList = snap.data;
+      //       return ListView.builder(
+      //         itemCount: bookList.length,
+      //         itemBuilder: (BuildContext context, int index){
+      //           return ListTile(
+      //             title: Text(bookList[index]["title"]),
+      //           );
+      //         },
+      //       );
+      //     }
+      //     return Text("ss");
+      //   },
+      // ),
+    );
   }
 }
