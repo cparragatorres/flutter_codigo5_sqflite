@@ -22,7 +22,7 @@ class DBAdmin {
       version: 1,
       onOpen: (db) {},
       onCreate: (Database db, int v) async {
-        await db.execute("CREATE TABLE...");
+        await db.execute("CREATE TABLE BOOK(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, author TEXT, description TEXT, image TEXT)");
       },
     );
   }
