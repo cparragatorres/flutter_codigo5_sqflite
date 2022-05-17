@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -81,6 +82,55 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )
                   ],
+                ),
+                Container(
+                  width: 100,
+                  height: 3,
+                  decoration: BoxDecoration(
+                    color: kSecondaryColor,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                const SizedBox(
+                  height: 24.0,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: "Search",
+                    hintStyle: GoogleFonts.poppins(
+                      fontSize: 14.0,
+                      color: kPrimaryColor.withOpacity(0.45),
+                    ),
+                    suffixIcon: Container(
+                      margin: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor,
+                        borderRadius: BorderRadius.circular(12.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: kSecondaryColor.withOpacity(0.2),
+                            blurRadius: 10,
+                            offset: const Offset(4, 4),
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(14.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(14.0),
+                    ),
+
+                  ),
                 ),
               ],
             ),
