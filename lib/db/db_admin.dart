@@ -44,10 +44,22 @@ class DBAdmin {
 
   // CREATE - Insertar data en la tabla
 
-  insertBook() async{
+  insertBookRaw() async{
     final Database? db = await getCheckDatabase();
     db!.rawInsert("INSERT INTO BOOK(title, author, description, image) VALUES('The Hobbit', 'JRR Tolkien', 'Lorem ipsum', 'https://www...')");
   }
+
+  insertBook() async{
+    final Database? db = await getCheckDatabase();
+    db!.insert("BOOK", {
+      "title": "The Silmarillion",
+      "author": "JRR Tolkien",
+      "description": "Lorem ipsum 2",
+      "image": "htts://www..."
+    });
+  }
+
+
 
 
 
