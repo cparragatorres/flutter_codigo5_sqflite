@@ -15,7 +15,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    DBAdmin.db.getBooksRaw();
     DBAdmin.db.getBooks();
+
+    // DBAdmin.db.insertBook();
+
   }
 
   @override

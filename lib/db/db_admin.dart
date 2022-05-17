@@ -30,11 +30,25 @@ class DBAdmin {
 
   // READ - Realizar consultas a la tabla
 
-  getBooks() async {
+  getBooksRaw() async {
    final Database? db = await getCheckDatabase();
    List res = await db!.rawQuery("SELECT * FROM BOOK");
    print(res);
   }
+
+  getBooks() async{
+    final Database? db = await getCheckDatabase();
+    List res = await db!.query("BOOK");
+    print(res);
+  }
+
+  // CREATE - Insertar data en la tabla
+
+  insertBook() async{
+    final Database? db = await getCheckDatabase();
+    db!.rawInsert("INSERT INTO BOOK(title, author, description, image) VALUES('The Hobbit', 'JRR Tolkien', 'Lorem ipsum', 'https://www...')");
+  }
+
 
 
 
