@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 24.0,
+                  height: 30.0,
                 ),
                 TextField(
                   decoration: InputDecoration(
@@ -131,6 +131,29 @@ class _HomePageState extends State<HomePage> {
                     ),
 
                   ),
+                ),
+                const SizedBox(
+                  height: 30.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Mis Libros",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "Ver más",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white38,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12.0
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
