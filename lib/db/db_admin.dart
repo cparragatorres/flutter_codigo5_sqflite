@@ -8,13 +8,13 @@ class DBAdmin {
   static final DBAdmin db = DBAdmin._();
   DBAdmin._();
 
-  getCheckDatabase() async{
+  Future<Database?> getCheckDatabase() async{
     if (myDatabase != null) return myDatabase;
     myDatabase = await initDB(); //Creación de la base de datos
     return myDatabase;
   }
 
-   Future<Database> initDB() async {
+  Future<Database> initDB() async {
     Directory directory = await getApplicationDocumentsDirectory();
     String path = join(directory.path, "BookDB.db");
     return await openDatabase(
@@ -26,4 +26,16 @@ class DBAdmin {
       },
     );
   }
+
+
+  // READ - Realizar consultas a la tabla
+
+  getBooks() async {
+   final Database? db = await getCheckDatabase();
+   List res = await db!.rawQuery("SELECT * FROM BOOK");
+   print(res);
+  }
+
+
+
 }
