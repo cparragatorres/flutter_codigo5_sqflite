@@ -30,16 +30,16 @@ class DBAdmin {
 
   // READ - Realizar consultas a la tabla
 
-  getBooksRaw() async {
+  Future<List> getBooksRaw() async {
    final Database? db = await getCheckDatabase();
    List res = await db!.rawQuery("SELECT * FROM BOOK");
-   print(res);
+   return res;
   }
 
-  getBooks() async{
+  Future<List> getBooks() async{
     final Database? db = await getCheckDatabase();
     List res = await db!.query("BOOK");
-    print(res);
+    return res;
   }
 
   // CREATE - Insertar data en la tabla
