@@ -152,18 +152,46 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      ItemSliderWidget(),
-                      ItemSliderWidget(),
-                      ItemSliderWidget(),
-                      ItemSliderWidget(),
-                    ],
-                  ),
+                // SingleChildScrollView(
+                //   physics: const BouncingScrollPhysics(),
+                //   scrollDirection: Axis.horizontal,
+                //   child: Row(
+                //     children: [
+                //       ItemSliderWidget(),
+                //       ItemSliderWidget(),
+                //       ItemSliderWidget(),
+                //       ItemSliderWidget(),
+                //     ],
+                //   ),
+                // ),
+
+                FutureBuilder(
+                  future: DBAdmin.db.getBooks(),
+                  builder: (BuildContext context, AsyncSnapshot snap) {
+                    if (snap.hasData) {
+                      List list = snap.data;
+                      return SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: list
+                              .map(
+                                (e) => ItemSliderWidget(
+                                  author: e["author"],
+                                  image: e["image"],
+                                  title: e["title"],
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      );
+                    }
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
                 ),
+
                 const SizedBox(
                   height: 30.0,
                 ),

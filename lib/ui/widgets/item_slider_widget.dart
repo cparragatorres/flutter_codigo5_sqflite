@@ -1,11 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemSliderWidget extends StatelessWidget {
-  const ItemSliderWidget({
-    Key? key,
-  }) : super(key: key);
+  String image;
+  String title;
+  String author;
+
+  ItemSliderWidget({
+    required this.image,
+    required this.title,
+    required this.author,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class ItemSliderWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(14.0),
             child: Image.network(
-              "https://bookstr.com/wp-content/uploads/2019/12/Image-via-Amazon-1.jpg",
+              image,
               height: 250,
               width: 170,
               fit: BoxFit.cover,
@@ -33,7 +38,7 @@ class ItemSliderWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "JRR Tolkien",
+                  author,
                   style: GoogleFonts.poppins(
                     fontSize: 12.0,
                     color: Colors.white70,
@@ -43,7 +48,7 @@ class ItemSliderWidget extends StatelessWidget {
                   height: 2.0,
                 ),
                 Text(
-                  "The Hobbit - Final Edition",
+                  title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
