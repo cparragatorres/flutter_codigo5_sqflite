@@ -152,65 +152,94 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 20.0,
                 ),
-
-                FutureBuilder(
-                  future: DBAdmin.db.getBooks(),
-                  builder: (BuildContext context, AsyncSnapshot snap) {
-                    if (snap.hasData) {
-                      List list = snap.data;
-                      return SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: list
-                              .map(
-                                (e) => ItemSliderWidget(
-                                  author: e["author"],
-                                  image: e["image"],
-                                  title: e["title"],
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
+                // FutureBuilder(
+                //   future: DBAdmin.db.getBooks(),
+                //   builder: (BuildContext context, AsyncSnapshot snap) {
+                //     if (snap.hasData) {
+                //       List list = snap.data;
+                //       return SingleChildScrollView(
+                //         physics: const BouncingScrollPhysics(),
+                //         scrollDirection: Axis.horizontal,
+                //         child: Row(
+                //           children: list
+                //               .map(
+                //                 (e) => ItemSliderWidget(
+                //                   author: e["author"],
+                //                   image: e["image"],
+                //                   title: e["title"],
+                //                 ),
+                //               )
+                //               .toList(),
+                //         ),
+                //       );
+                //     }
+                //     return const Center(
+                //       child: CircularProgressIndicator(),
+                //     );
+                //   },
+                // ),
+                // const SizedBox(
+                //   height: 30.0,
+                // ),
+                // FutureBuilder(
+                //   future: DBAdmin.db.getBooks(),
+                //   builder: (BuildContext context, AsyncSnapshot snap) {
+                //     if (snap.hasData) {
+                //       List list = snap.data;
+                //       return Column(
+                //         children: list
+                //             .map(
+                //               (e) => ItemBookWidget(
+                //                 title: e["title"],
+                //                 image: e["image"],
+                //                 author: e["author"],
+                //                 description: e["description"],
+                //               ),
+                //             )
+                //             .toList(),
+                //       );
+                //       // return ListView.builder(
+                //       //   shrinkWrap: true,
+                //       //   itemCount: list.length,
+                //       //   itemBuilder: (BuildContext coxtext, int index){
+                //       //     return ItemBookWidget();
+                //       //   },
+                //       // );
+                //     }
+                //     return const Center(
+                //       child: CircularProgressIndicator(),
+                //     );
+                //   },
+                // ),
+                SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: books
+                        .map(
+                          (e) => ItemSliderWidget(
+                            image: e["image"],
+                            title: e["title"],
+                            author: e["author"],
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
                 const SizedBox(
                   height: 30.0,
                 ),
-                FutureBuilder(
-                  future: DBAdmin.db.getBooks(),
-                  builder: (BuildContext context, AsyncSnapshot snap) {
-                    if (snap.hasData) {
-                      List list = snap.data;
-                      return Column(
-                        children: list
-                            .map(
-                              (e) => ItemBookWidget(
-                                title: e["title"],
-                                image: e["image"],
-                                author: e["author"],
-                                description: e["description"],
-                              ),
-                            )
-                            .toList(),
-                      );
-                      // return ListView.builder(
-                      //   shrinkWrap: true,
-                      //   itemCount: list.length,
-                      //   itemBuilder: (BuildContext coxtext, int index){
-                      //     return ItemBookWidget();
-                      //   },
-                      // );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
+                Column(
+                  children: books
+                      .map(
+                        (e) => ItemBookWidget(
+                          image: e["image"],
+                          author: e["author"],
+                          title: e["title"],
+                          description: e["description"],
+                        ),
+                      )
+                      .toList(),
                 ),
               ],
             ),
