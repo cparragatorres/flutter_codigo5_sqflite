@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemBookWidget extends StatelessWidget {
-  const ItemBookWidget({
-    Key? key,
-  }) : super(key: key);
+  String image;
+  String author;
+  String title;
+  String description;
+
+  ItemBookWidget({
+    required this.image,
+    required this.author,
+    required this.title,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +23,7 @@ class ItemBookWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.network(
-              "https://images-na.ssl-images-amazon.com/images/I/61pMvyfWphL.jpg",
+              image,
               width: 76.0,
               fit: BoxFit.cover,
             ),
@@ -28,7 +36,7 @@ class ItemBookWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Gabriel García Marquez",
+                  author,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
@@ -37,7 +45,7 @@ class ItemBookWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Cien años de soledad",
+                  title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
@@ -47,7 +55,7 @@ class ItemBookWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                  description,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(

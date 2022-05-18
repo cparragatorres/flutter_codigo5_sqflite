@@ -167,29 +167,36 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 30.0,
                 ),
-
                 FutureBuilder(
                   future: DBAdmin.db.getBooks(),
-                  builder: (BuildContext context, AsyncSnapshot snap){
-                    if(snap.hasData){
+                  builder: (BuildContext context, AsyncSnapshot snap) {
+                    if (snap.hasData) {
                       List list = snap.data;
-                      // return Column(
-                      //   children: list.map((e) => ItemBookWidget()).toList(),
-                      // );
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: list.length,
-                        itemBuilder: (BuildContext coxtext, int index){
-                          return ItemBookWidget();
-                        },
+                      return Column(
+                        children: list
+                            .map(
+                              (e) => ItemBookWidget(
+                                title: e["title"],
+                                image: e["image"],
+                                author: e["author"],
+                                description: e["description"],
+                              ),
+                            )
+                            .toList(),
                       );
+                      // return ListView.builder(
+                      //   shrinkWrap: true,
+                      //   itemCount: list.length,
+                      //   itemBuilder: (BuildContext coxtext, int index){
+                      //     return ItemBookWidget();
+                      //   },
+                      // );
                     }
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
                   },
                 ),
-
               ],
             ),
           ),
@@ -224,6 +231,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-
