@@ -38,9 +38,13 @@ class DBAdmin {
   }
 
   Future<List<BookModel>> getBooks() async{
+    List<BookModel> books = [];
     final Database? db = await getCheckDatabase();
     List res = await db!.query("BOOK");
-    return res;
+    res.forEach((element) {
+      books.add(BookModel.deMapaAModelo(element));
+    });
+    return books;
   }
 
 

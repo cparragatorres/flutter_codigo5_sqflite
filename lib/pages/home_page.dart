@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List books = [];
+  List<BookModel> books = [];
 
   @override
   void initState() {
@@ -38,16 +38,11 @@ class _HomePageState extends State<HomePage> {
     };
 
     BookModel myBook = BookModel.deMapaAModelo(miLibritoMap);
-
-
-
-
   }
 
   getData() {
     DBAdmin.db.getBooks().then((value) {
       books = value;
-      print(books[0]);
       setState(() {});
     });
   }
@@ -241,9 +236,9 @@ class _HomePageState extends State<HomePage> {
                     children: books
                         .map(
                           (e) => ItemSliderWidget(
-                            image: e["image"],
-                            title: e["title"],
-                            author: e["author"],
+                            image: e.image,
+                            title: e.title,
+                            author: e.author,
                           ),
                         )
                         .toList(),
@@ -256,10 +251,10 @@ class _HomePageState extends State<HomePage> {
                   children: books
                       .map(
                         (item) => ItemBookWidget(
-                          image: item["image"],
-                          author: item["author"],
-                          title: item["title"],
-                          description: item["description"],
+                          image: item.image,
+                          author: item.author,
+                          title: item.title,
+                          description: item.description,
                         ),
                       )
                       .toList(),
