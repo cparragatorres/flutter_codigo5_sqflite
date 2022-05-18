@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite/db/db_admin.dart';
 import 'package:flutter_codigo5_sqflite/ui/utils/colors.dart';
@@ -12,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   List books = [];
 
   @override
@@ -22,12 +20,10 @@ class _HomePageState extends State<HomePage> {
     getData();
   }
 
-  getData(){
-    DBAdmin.db.getBooks().then((value){
+  getData() {
+    DBAdmin.db.getBooks().then((value) {
       books = value;
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
@@ -49,12 +45,11 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Good Morning",
+                            "Buenos días",
                             style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14.0
-                            ),
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.0),
                           ),
                           const SizedBox(
                             height: 4.0,
@@ -66,8 +61,7 @@ class _HomePageState extends State<HomePage> {
                             style: GoogleFonts.poppins(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 20.0
-                            ),
+                                fontSize: 20.0),
                           ),
                         ],
                       ),
@@ -98,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    hintText: "Search",
+                    hintText: "Buscar",
                     hintStyle: GoogleFonts.poppins(
                       fontSize: 14.0,
                       color: kPrimaryColor.withOpacity(0.45),
@@ -129,7 +123,6 @@ class _HomePageState extends State<HomePage> {
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(14.0),
                     ),
-
                   ),
                 ),
                 const SizedBox(
@@ -148,17 +141,15 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       "Ver más",
                       style: GoogleFonts.poppins(
-                        color: Colors.white38,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12.0
-                      ),
+                          color: Colors.white38,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.0),
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 20.0,
                 ),
-
                 SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -171,15 +162,46 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-
-
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.network(
+                        "https://images-na.ssl-images-amazon.com/images/I/61pMvyfWphL.jpg",
+                        width: 76.0,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Gabriel García Marquez",
+                          style: GoogleFonts.poppins(
+                            color: Colors.white60,
+                            fontSize: 13.0,
+                          ),
+                        ),
+                        Text(
+                          "Cien años de soledad",
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ),
       ),
-
-
 
       // body: ListView.builder(
       //   itemCount: books.length,
