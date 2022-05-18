@@ -13,16 +13,23 @@ class BookModel {
     required this.image,
   });
 
-  int suma() => 2 + 2;
 
-  String mensaje() => "Hola de nuevo";
-
-  factory BookModel.deMapaAModelo(Map<String, dynamic> mapa) => BookModel(
+  factory BookModel.fromJson(Map<String, dynamic> mapa) => BookModel(
     id: mapa["id"],
     title: mapa["title"],
     author: mapa["author"],
     description: mapa["description"],
     image: mapa["image"],
   );
+
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "title": title,
+    "author": author,
+    "description": description,
+    "image": image,
+  };
+
 
 }

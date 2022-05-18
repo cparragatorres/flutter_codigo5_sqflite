@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     getData();
+
     BookModel miLibrito = BookModel(
       id: 10,
       title: "w1",
@@ -37,7 +38,10 @@ class _HomePageState extends State<HomePage> {
       "image": "https",
     };
 
-    BookModel myBook = BookModel.deMapaAModelo(miLibritoMap);
+    BookModel myBook = BookModel.fromJson(miLibritoMap);
+
+    print(miLibrito.toJson());
+
   }
 
   getData() {
@@ -233,8 +237,7 @@ class _HomePageState extends State<HomePage> {
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: books
-                        .map(
+                    children: books.map<Widget>(
                           (e) => ItemSliderWidget(
                             image: e.image,
                             title: e.title,
@@ -249,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Column(
                   children: books
-                      .map(
+                      .map<Widget>(
                         (item) => ItemBookWidget(
                           image: item.image,
                           author: item.author,
