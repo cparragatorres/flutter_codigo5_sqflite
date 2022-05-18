@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite/db/db_admin.dart';
+import 'package:flutter_codigo5_sqflite/models/book_model.dart';
 import 'package:flutter_codigo5_sqflite/ui/utils/colors.dart';
 import 'package:flutter_codigo5_sqflite/ui/widgets/item_book_widget.dart';
 import 'package:flutter_codigo5_sqflite/ui/widgets/item_slider_widget.dart';
@@ -20,6 +21,27 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     getData();
+    BookModel miLibrito = BookModel(
+      id: 10,
+      title: "w1",
+      author: "w2",
+      description: "w3",
+      image: "http",
+    );
+
+    Map<String, dynamic> miLibritoMap = {
+      "id": 2,
+      "title": "r1",
+      "author": "r2",
+      "description": "r3",
+      "image": "https",
+    };
+
+    BookModel myBook = BookModel.deMapaAModelo(miLibritoMap);
+
+
+
+
   }
 
   getData() {
