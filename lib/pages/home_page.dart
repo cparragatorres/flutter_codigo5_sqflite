@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   getData() {
     DBAdmin.db.getBooks().then((value) {
       books = value;
+      print(books[0]);
       setState(() {});
     });
   }
@@ -232,11 +233,11 @@ class _HomePageState extends State<HomePage> {
                 Column(
                   children: books
                       .map(
-                        (e) => ItemBookWidget(
-                          image: e["image"],
-                          author: e["author"],
-                          title: e["title"],
-                          description: e["description"],
+                        (item) => ItemBookWidget(
+                          image: item["image"],
+                          author: item["author"],
+                          title: item["title"],
+                          description: item["description"],
                         ),
                       )
                       .toList(),

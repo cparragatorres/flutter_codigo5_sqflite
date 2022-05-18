@@ -30,9 +30,9 @@ class DBAdmin {
 
   // READ - Realizar consultas a la tabla
 
-  Future<List> getBooksRaw() async {
+  Future<List<Map<String, dynamic>>> getBooksRaw() async {
    final Database? db = await getCheckDatabase();
-   List res = await db!.rawQuery("SELECT * FROM BOOK");
+   List<Map<String, dynamic>> res = await db!.rawQuery("SELECT * FROM BOOK");
    return res;
   }
 
