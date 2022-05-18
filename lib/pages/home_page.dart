@@ -152,18 +152,6 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                // SingleChildScrollView(
-                //   physics: const BouncingScrollPhysics(),
-                //   scrollDirection: Axis.horizontal,
-                //   child: Row(
-                //     children: [
-                //       ItemSliderWidget(),
-                //       ItemSliderWidget(),
-                //       ItemSliderWidget(),
-                //       ItemSliderWidget(),
-                //     ],
-                //   ),
-                // ),
 
                 FutureBuilder(
                   future: DBAdmin.db.getBooks(),
@@ -191,7 +179,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-
                 const SizedBox(
                   height: 30.0,
                 ),
