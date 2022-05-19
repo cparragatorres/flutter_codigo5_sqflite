@@ -16,7 +16,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   List<BookModel> books = [];
+
 
   @override
   void initState() {
@@ -63,77 +65,86 @@ class _HomePageState extends State<HomePage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "Agregar libro",
-                style: GoogleFonts.poppins(
-                  color: Colors.white,
+          content: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Agregar libro",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 7.0,
-              ),
-              Container(
-                width: 80.0,
-                height: 2.7,
-                decoration: BoxDecoration(
-                  color: kSecondaryColor,
-                  borderRadius: BorderRadius.circular(10.0),
+                const SizedBox(
+                  height: 7.0,
                 ),
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              InputTextFieldWidget(
-                hintText: "Título",
-                icon: "bx-bookmark",
-              ),
-              InputTextFieldWidget(
-                hintText: "Autor",
-                icon: "bx-user",
-              ),
-              InputTextFieldWidget(
-                hintText: "Descripción",
-                icon: "bx-list-ul",
-                maxLines: 2,
-              ),
-              InputTextFieldWidget(
-                hintText: "Portada",
-                icon: "bx-image",
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Cancelar",
-                      style: GoogleFonts.poppins(
-                        color: Colors.white60,
+                Container(
+                  width: 80.0,
+                  height: 2.7,
+                  decoration: BoxDecoration(
+                    color: kSecondaryColor,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                InputTextFieldWidget(
+                  hintText: "Título",
+                  icon: "bx-bookmark",
+                ),
+                InputTextFieldWidget(
+                  hintText: "Autor",
+                  icon: "bx-user",
+                ),
+                InputTextFieldWidget(
+                  hintText: "Descripción",
+                  icon: "bx-list-ul",
+                  maxLines: 2,
+                ),
+                InputTextFieldWidget(
+                  hintText: "Portada",
+                  icon: "bx-image",
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        "Cancelar",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white60,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: kSecondaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: kSecondaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      onPressed: () {
+
+
+
+                      },
+                      child: Text(
+                        "Aceptar",
+                        style: GoogleFonts.poppins(),
                       ),
                     ),
-                    onPressed: () {},
-                    child: Text(
-                      "Aceptar",
-                      style: GoogleFonts.poppins(),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
