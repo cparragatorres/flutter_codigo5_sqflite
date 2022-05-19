@@ -7,11 +7,13 @@ class InputTextFieldWidget extends StatelessWidget {
   String hintText;
   String icon;
   int? maxLines;
+  TextEditingController controller;
 
   InputTextFieldWidget({
     required this.hintText,
     required this.icon,
     this.maxLines,
+    required this.controller,
   });
 
   @override
@@ -19,6 +21,7 @@ class InputTextFieldWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16.0),
       child: TextField(
+        controller: controller,
         style: GoogleFonts.poppins(
           color: Colors.white,
         ),

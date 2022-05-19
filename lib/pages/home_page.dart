@@ -19,6 +19,11 @@ class _HomePageState extends State<HomePage> {
 
   List<BookModel> books = [];
 
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _authorController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _imageController = TextEditingController();
+
 
   @override
   void initState() {
@@ -93,19 +98,23 @@ class _HomePageState extends State<HomePage> {
                 InputTextFieldWidget(
                   hintText: "Título",
                   icon: "bx-bookmark",
+                  controller: _titleController,
                 ),
                 InputTextFieldWidget(
                   hintText: "Autor",
                   icon: "bx-user",
+                  controller: _authorController,
                 ),
                 InputTextFieldWidget(
                   hintText: "Descripción",
                   icon: "bx-list-ul",
                   maxLines: 2,
+                  controller: _descriptionController,
                 ),
                 InputTextFieldWidget(
                   hintText: "Portada",
                   icon: "bx-image",
+                  controller: _imageController,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -133,7 +142,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onPressed: () {
 
-
+                        print(_titleController.text);
+                        print(_authorController.text);
+                        print(_descriptionController.text);
+                        print(_imageController.text);
 
                       },
                       child: Text(
