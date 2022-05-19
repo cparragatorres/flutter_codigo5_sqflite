@@ -40,7 +40,8 @@ class DBAdmin {
   Future<List<BookModel>> getBooks() async {
     List<BookModel> books = [];
     final Database? db = await getCheckDatabase();
-    List res = await db!.query("BOOK");
+    List res = await db!.query("BOOK", orderBy: "id DESC");
+    //res = res.reversed.toList();
     books = res
         .map<BookModel>((matasquita) => BookModel.fromJson(matasquita))
         .toList();

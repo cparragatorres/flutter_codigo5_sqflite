@@ -145,19 +145,42 @@ class _HomePageState extends State<HomePage> {
                         //   _descriptionController.text,
                         //   _imageController.text,
                         // );
-                        BookModel book = BookModel(
-                          title: _titleController.text,
-                          author: _authorController.text,
-                          description: _descriptionController.text,
-                          image: _imageController.text,
-                        );
-                        DBAdmin.db.insertBook(book).then((value){
-                          if(value > 0){
-                            getData();
-                            Navigator.pop(context);
-                          }
-                        });
 
+                        // BookModel book = BookModel(
+                        //   title: _titleController.text,
+                        //   author: _authorController.text,
+                        //   description: _descriptionController.text,
+                        //   image: _imageController.text,
+                        // );
+                        // DBAdmin.db.insertBook(book).then((value){
+                        //   if(value > 0){
+                        //     getData();
+                        //     Navigator.pop(context);
+                        //   }
+                        // });
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: const Color(0xff00afb9),
+                            duration: const Duration(seconds: 10),
+                            content: Row(
+                              children: const [
+                                Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "El libro fue agregado correctamente",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
                       },
                       child: Text(
                         "Aceptar",
