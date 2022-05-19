@@ -47,9 +47,9 @@ class DBAdmin {
 
   // CREATE - Insertar data en la tabla
 
-  insertBookRaw() async{
+  insertBookRaw(String title, String author, String description, String image) async{
     final Database? db = await getCheckDatabase();
-    db!.rawInsert("INSERT INTO BOOK(title, author, description, image) VALUES('The Hobbit', 'JRR Tolkien', 'Lorem ipsum', 'https://www...')");
+    db!.rawInsert("INSERT INTO BOOK(title, author, description, image) VALUES('$title', '$author', '$description', '$image')");
   }
 
   insertBook() async{

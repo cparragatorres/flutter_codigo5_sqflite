@@ -16,14 +16,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   List<BookModel> books = [];
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _authorController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _imageController = TextEditingController();
-
 
   @override
   void initState() {
@@ -141,12 +139,16 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onPressed: () {
-
                         print(_titleController.text);
                         print(_authorController.text);
                         print(_descriptionController.text);
                         print(_imageController.text);
-
+                        DBAdmin.db.insertBookRaw(
+                          _titleController.text,
+                          _authorController.text,
+                          _descriptionController.text,
+                          _imageController.text,
+                        );
                       },
                       child: Text(
                         "Aceptar",
