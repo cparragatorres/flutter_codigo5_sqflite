@@ -47,9 +47,10 @@ class DBAdmin {
 
   // CREATE - Insertar data en la tabla
 
-  insertBookRaw(BookModel model) async{
+  Future<int> insertBookRaw(BookModel model) async{
     final Database? db = await getCheckDatabase();
-    db!.rawInsert("INSERT INTO BOOK(title, author, description, image) VALUES('${model.title}', '${model.author}', '${model.description}', '${model.image}')");
+    int res = await db!.rawInsert("INSERT INTO BOOK(title, author, description, image) VALUES('${model.title}', '${model.author}', '${model.description}', '${model.image}')");
+    return res;
   }
 
 

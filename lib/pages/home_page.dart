@@ -139,10 +139,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onPressed: () {
-                        print(_titleController.text);
-                        print(_authorController.text);
-                        print(_descriptionController.text);
-                        print(_imageController.text);
                         // DBAdmin.db.insertBookRaw(
                         //   _titleController.text,
                         //   _authorController.text,
@@ -156,7 +152,13 @@ class _HomePageState extends State<HomePage> {
                           description: _descriptionController.text,
                           image: _imageController.text,
                         );
-                        DBAdmin.db.insertBookRaw(book);
+                        DBAdmin.db.insertBookRaw(book).then((value){
+                          if(value > 0){
+                            getData();
+                            Navigator.pop(context);
+                          }
+                        });
+
                       },
                       child: Text(
                         "Aceptar",

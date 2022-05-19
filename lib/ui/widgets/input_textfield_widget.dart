@@ -21,6 +21,9 @@ class InputTextFieldWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16.0),
       child: TextField(
+        toolbarOptions: ToolbarOptions(
+          paste: true,
+        ),
         controller: controller,
         style: GoogleFonts.poppins(
           color: Colors.white,
