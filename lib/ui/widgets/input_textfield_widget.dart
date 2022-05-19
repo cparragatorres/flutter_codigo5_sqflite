@@ -1,11 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite/ui/utils/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InputTextFieldWidget extends StatelessWidget {
-  const InputTextFieldWidget({Key? key}) : super(key: key);
+  String hintText;
+  String icon;
+  int? maxLines;
+
+  InputTextFieldWidget({
+    required this.hintText,
+    required this.icon,
+    this.maxLines,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +22,10 @@ class InputTextFieldWidget extends StatelessWidget {
         style: GoogleFonts.poppins(
           color: Colors.white,
         ),
+        maxLines: maxLines,
         cursorColor: kSecondaryColor,
         decoration: InputDecoration(
-          hintText: "Título",
+          hintText: hintText,
           hintStyle: GoogleFonts.poppins(
             color: Colors.white54,
             fontSize: 14,
@@ -25,7 +33,7 @@ class InputTextFieldWidget extends StatelessWidget {
           filled: true,
           fillColor: Color(0xff2A2D37),
           prefixIcon: SvgPicture.asset(
-            'assets/images/bx-bookmark.svg',
+            'assets/images/$icon.svg',
             color: Colors.white60,
             height: 10,
             fit: BoxFit.scaleDown,
@@ -43,6 +51,3 @@ class InputTextFieldWidget extends StatelessWidget {
     );
   }
 }
-
-
-

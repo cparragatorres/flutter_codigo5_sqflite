@@ -86,10 +86,23 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 16.0,
               ),
-              InputTextFieldWidget(),
-              InputTextFieldWidget(),
-              InputTextFieldWidget(),
-              InputTextFieldWidget(),
+              InputTextFieldWidget(
+                hintText: "Título",
+                icon: "bx-bookmark",
+              ),
+              InputTextFieldWidget(
+                hintText: "Autor",
+                icon: "bx-user",
+              ),
+              InputTextFieldWidget(
+                hintText: "Descripción",
+                icon: "bx-list-ul",
+                maxLines: 2,
+              ),
+              InputTextFieldWidget(
+                hintText: "Portada",
+                icon: "bx-image",
+              ),
             ],
           ),
         );
