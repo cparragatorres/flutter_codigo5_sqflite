@@ -143,12 +143,20 @@ class _HomePageState extends State<HomePage> {
                         print(_authorController.text);
                         print(_descriptionController.text);
                         print(_imageController.text);
-                        DBAdmin.db.insertBookRaw(
-                          _titleController.text,
-                          _authorController.text,
-                          _descriptionController.text,
-                          _imageController.text,
+                        // DBAdmin.db.insertBookRaw(
+                        //   _titleController.text,
+                        //   _authorController.text,
+                        //   _descriptionController.text,
+                        //   _imageController.text,
+                        // );
+                        BookModel book = BookModel(
+                          id: 0,
+                          title: _titleController.text,
+                          author: _authorController.text,
+                          description: _descriptionController.text,
+                          image: _imageController.text,
                         );
+                        DBAdmin.db.insertBookRaw(book);
                       },
                       child: Text(
                         "Aceptar",
