@@ -9,32 +9,35 @@ class InputTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      style: GoogleFonts.poppins(
-        color: Colors.white,
-      ),
-      cursorColor: kSecondaryColor,
-      decoration: InputDecoration(
-        hintText: "Título",
-        hintStyle: GoogleFonts.poppins(
-          color: Colors.white54,
-          fontSize: 14,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16.0),
+      child: TextField(
+        style: GoogleFonts.poppins(
+          color: Colors.white,
         ),
-        filled: true,
-        fillColor: Color(0xff2A2D37),
-        prefixIcon: SvgPicture.asset(
-          'assets/images/bx-bookmark.svg',
-          color: Colors.white60,
-          height: 10,
-          fit: BoxFit.scaleDown,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          borderSide: BorderSide.none,
+        cursorColor: kSecondaryColor,
+        decoration: InputDecoration(
+          hintText: "Título",
+          hintStyle: GoogleFonts.poppins(
+            color: Colors.white54,
+            fontSize: 14,
+          ),
+          filled: true,
+          fillColor: Color(0xff2A2D37),
+          prefixIcon: SvgPicture.asset(
+            'assets/images/bx-bookmark.svg',
+            color: Colors.white60,
+            height: 10,
+            fit: BoxFit.scaleDown,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );
