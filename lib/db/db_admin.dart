@@ -41,21 +41,9 @@ class DBAdmin {
     List<BookModel> books = [];
     final Database? db = await getCheckDatabase();
     List res = await db!.query("BOOK");
-
-    // res.forEach((element) {
-    //   books.add(BookModel.deMapaAModelo(element));
-    // });
     books = res.map<BookModel>((matasquita) => BookModel.fromJson(matasquita)).toList();
     return books;
   }
-
-
-
-
-
-
-
-
 
   // CREATE - Insertar data en la tabla
 

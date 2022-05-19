@@ -41,7 +41,6 @@ class _HomePageState extends State<HomePage> {
     BookModel myBook = BookModel.fromJson(miLibritoMap);
 
     print(miLibrito.toJson());
-
   }
 
   getData() {
@@ -51,10 +50,38 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  _showForm() {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.66),
+      builder: (BuildContext context){
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14.0),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("Agregar libro"),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kSecondaryColor,
+        child: Icon(Icons.add),
+        onPressed: () {
+          _showForm();
+        },
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -237,7 +264,8 @@ class _HomePageState extends State<HomePage> {
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: books.map<Widget>(
+                    children: books
+                        .map<Widget>(
                           (e) => ItemSliderWidget(
                             image: e.image,
                             title: e.title,
@@ -261,6 +289,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       )
                       .toList(),
+                ),
+                const SizedBox(
+                  height: 50.0,
                 ),
               ],
             ),
