@@ -146,13 +146,12 @@ class _HomePageState extends State<HomePage> {
                         //   _imageController.text,
                         // );
                         BookModel book = BookModel(
-                          id: 0,
                           title: _titleController.text,
                           author: _authorController.text,
                           description: _descriptionController.text,
                           image: _imageController.text,
                         );
-                        DBAdmin.db.insertBookRaw(book).then((value){
+                        DBAdmin.db.insertBook(book).then((value){
                           if(value > 0){
                             getData();
                             Navigator.pop(context);
