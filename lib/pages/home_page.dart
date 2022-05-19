@@ -103,6 +103,36 @@ class _HomePageState extends State<HomePage> {
                 hintText: "Portada",
                 icon: "bx-image",
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Cancelar",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white60,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: kSecondaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Aceptar",
+                      style: GoogleFonts.poppins(),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         );
