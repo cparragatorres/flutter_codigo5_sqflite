@@ -4,6 +4,7 @@ import 'package:flutter_codigo5_sqflite/models/book_model.dart';
 import 'package:flutter_codigo5_sqflite/ui/utils/colors.dart';
 import 'package:flutter_codigo5_sqflite/ui/widgets/item_book_widget.dart';
 import 'package:flutter_codigo5_sqflite/ui/widgets/item_slider_widget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -85,6 +86,10 @@ class _HomePageState extends State<HomePage> {
                 height: 16.0,
               ),
               TextField(
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                ),
+                cursorColor: kSecondaryColor,
                 decoration: InputDecoration(
                   hintText: "Título",
                   hintStyle: GoogleFonts.poppins(
@@ -93,6 +98,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   filled: true,
                   fillColor: Color(0xff2A2D37),
+                  prefixIcon: SvgPicture.asset(
+                    'assets/images/bx-bookmark.svg',
+                    color: Colors.white60,
+                    height: 10,
+                    fit: BoxFit.scaleDown,
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
                     borderSide: BorderSide.none,
@@ -103,9 +114,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-
-
-
             ],
           ),
         );
