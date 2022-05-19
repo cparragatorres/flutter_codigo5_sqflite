@@ -55,15 +55,57 @@ class _HomePageState extends State<HomePage> {
       context: context,
       barrierDismissible: true,
       barrierColor: Colors.black.withOpacity(0.66),
-      builder: (BuildContext context){
+      builder: (BuildContext context) {
         return AlertDialog(
+          backgroundColor: kPrimaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14.0),
+            borderRadius: BorderRadius.circular(16.0),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("Agregar libro"),
+              Text(
+                "Agregar libro",
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 7.0,
+              ),
+              Container(
+                width: 80.0,
+                height: 2.7,
+                decoration: BoxDecoration(
+                  color: kSecondaryColor,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Título",
+                  hintStyle: GoogleFonts.poppins(
+                    color: Colors.white54,
+                    fontSize: 14,
+                  ),
+                  filled: true,
+                  fillColor: Color(0xff2A2D37),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+
+
+
             ],
           ),
         );
