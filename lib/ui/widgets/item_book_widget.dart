@@ -67,6 +67,21 @@ class ItemBookWidget extends StatelessWidget {
                     fontSize: 12.0,
                   ),
                 ),
+                InkWell(
+                  onTap: (){
+
+                  },
+                  child: Text(
+                    "Eliminar",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                      color: Colors.white.withOpacity(0.85),
+                      fontSize: 12.0,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
