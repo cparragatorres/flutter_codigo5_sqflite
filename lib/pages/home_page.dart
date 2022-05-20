@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  _showForm() {
+  _showForm(bool add) {
     showDialog(
       context: context,
       barrierDismissible: true,
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Agregar libro",
+                  add ? "Agregar libro" : "Actualizar libro",
                   style: GoogleFonts.poppins(
                     color: Colors.white,
                   ),
@@ -211,7 +211,11 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: kSecondaryColor,
         child: Icon(Icons.add),
         onPressed: () {
-          _showForm();
+          _titleController.clear();
+          _descriptionController.clear();
+          _authorController.clear();
+          _imageController.clear();
+          _showForm(true);
         },
       ),
       body: SafeArea(
@@ -400,12 +404,13 @@ class _HomePageState extends State<HomePage> {
                         .map<Widget>(
                           (e) => GestureDetector(
                             onLongPress: (){
-                              _showForm();
+                              _titleController.text = e.title;
+                              _authorController.text = e.author;
+                              _descriptionController.text = e.description;
+                              _imageController.text = e.image;
+                              _showForm(false);
                             },
                             child: ItemSliderWidget(
-                              // image: e.image,
-                              // title: e.title,
-                              // author: e.author,
                               model: e,
                             ),
                           ),
@@ -417,7 +422,13 @@ class _HomePageState extends State<HomePage> {
                   height: 30.0,
                 ),
                 Column(
-                  children: books.map<Widget>((BookModel e)=> ItemBookWidget(model: e,)).toList(),
+                  children: books
+                      .map<Widget>(
+                        (BookModel e) => ItemBookWidget(
+                          model: e,
+                        ),
+                      )
+                      .toList(),
                 ),
                 const SizedBox(
                   height: 50.0,
