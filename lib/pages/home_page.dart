@@ -146,40 +146,46 @@ class _HomePageState extends State<HomePage> {
                         //   _imageController.text,
                         // );
 
-                        // BookModel book = BookModel(
-                        //   title: _titleController.text,
-                        //   author: _authorController.text,
-                        //   description: _descriptionController.text,
-                        //   image: _imageController.text,
-                        // );
-                        // DBAdmin.db.insertBook(book).then((value){
-                        //   if(value > 0){
-                        //     getData();
-                        //     Navigator.pop(context);
-                        //   }
-                        // });
+                        BookModel book = BookModel(
+                          title: _titleController.text,
+                          author: _authorController.text,
+                          description: _descriptionController.text,
+                          image: _imageController.text,
+                        );
 
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            backgroundColor: const Color(0xff00afb9),
-                            duration: const Duration(seconds: 10),
-                            content: Row(
-                              children: const [
-                                Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    "El libro fue agregado correctamente",
+                        DBAdmin.db.insertBook(book).then(
+                          (value) {
+                            if (value > 0) {
+                              getData();
+                              Navigator.pop(context);
+                              _titleController.clear();
+                              _authorController.clear();
+                              _descriptionController.clear();
+                              _imageController.clear();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: const Color(0xff1eb880),
+                                  duration: const Duration(seconds: 3),
+                                  content: Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.check,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "El libro fue agregado correctamente",
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
+                              );
+                            }
+                          },
                         );
                       },
                       child: Text(

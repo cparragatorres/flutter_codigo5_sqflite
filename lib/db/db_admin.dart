@@ -62,4 +62,19 @@ class DBAdmin {
     int res = await db!.insert("BOOK", model.toJson());
     return res;
   }
+
+  //UPDATE ... SET ....
+  Future<int> updateBookRaw(BookModel model) async{
+    final Database? db = await getCheckDatabase();
+    int res = await db!.rawUpdate("UPDATE BOOK SET title = '${model.title}', author = '${model.author}', description = '${model.description}', image = '${model.image}' WHERE id = ${model.id } ");
+    return res;
+  }
+
+  Future<int> updateBook(BookModel model) async{
+    final Database? db = await getCheckDatabase();
+    int res = await db!.update("BOOK", model.toJson(), where: "id = ${model.id}");
+    return res;
+  }
+
+
 }
