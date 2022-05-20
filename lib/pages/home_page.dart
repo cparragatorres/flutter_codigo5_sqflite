@@ -139,7 +139,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onPressed: () {
-
                         BookModel book = BookModel(
                           title: _titleController.text,
                           author: _authorController.text,
@@ -147,9 +146,9 @@ class _HomePageState extends State<HomePage> {
                           image: _imageController.text,
                         );
 
-                        if(add){
+                        if (add) {
                           DBAdmin.db.insertBook(book).then(
-                                (value) {
+                            (value) {
                               if (value > 0) {
                                 getData();
                                 Navigator.pop(context);
@@ -182,11 +181,10 @@ class _HomePageState extends State<HomePage> {
                               }
                             },
                           );
-                        }else{
-
+                        } else {
                           book.id = idBook;
 
-                          DBAdmin.db.updateBook(book).then((value){
+                          DBAdmin.db.updateBook(book).then((value) {
                             if (value > 0) {
                               getData();
                               Navigator.pop(context);
@@ -219,10 +217,6 @@ class _HomePageState extends State<HomePage> {
                             }
                           });
                         }
-
-
-
-
                       },
                       child: Text(
                         "Aceptar",
@@ -233,6 +227,77 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+          ),
+        );
+      },
+    );
+  }
+
+  _showDeleteDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10.0),
+          backgroundColor: Color(0xffF53649),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14.0),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Eliminar libro",
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                "¿Estás seguro de eliminar este libro?",
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13.0,
+                ),
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Cancelar",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white54,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 12.0,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Aceptar",
+                      style: GoogleFonts.poppins(
+                        color: Color(0xffF53649),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         );
       },
@@ -439,7 +504,7 @@ class _HomePageState extends State<HomePage> {
                     children: books
                         .map<Widget>(
                           (e) => GestureDetector(
-                            onLongPress: (){
+                            onLongPress: () {
                               idBook = e.id!;
                               _titleController.text = e.title;
                               _authorController.text = e.author;
@@ -463,8 +528,8 @@ class _HomePageState extends State<HomePage> {
                       .map<Widget>(
                         (BookModel e) => ItemBookWidget(
                           model: e,
-                          onTap: (){
-                            print("Eliminar!!!!!!!");
+                          onTap: () {
+                            _showDeleteDialog();
                           },
                         ),
                       )
