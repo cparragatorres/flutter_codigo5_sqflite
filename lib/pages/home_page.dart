@@ -417,17 +417,7 @@ class _HomePageState extends State<HomePage> {
                   height: 30.0,
                 ),
                 Column(
-                  children: books
-                      .map<Widget>(
-                        (item) => ItemBookWidget(
-                          // image: item.image,
-                          // author: item.author,
-                          // title: item.title,
-                          // description: item.description,
-                          model: item,
-                        ),
-                      )
-                      .toList(),
+                  children: books.map<Widget>((BookModel e)=> ItemBookWidget(model: e,)).toList(),
                 ),
                 const SizedBox(
                   height: 50.0,
