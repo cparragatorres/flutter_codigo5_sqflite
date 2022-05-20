@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<BookModel> books = [];
-
+  int idBook = 0;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _authorController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
@@ -139,12 +139,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onPressed: () {
-                        // DBAdmin.db.insertBookRaw(
-                        //   _titleController.text,
-                        //   _authorController.text,
-                        //   _descriptionController.text,
-                        //   _imageController.text,
-                        // );
 
                         BookModel book = BookModel(
                           title: _titleController.text,
@@ -153,8 +147,46 @@ class _HomePageState extends State<HomePage> {
                           image: _imageController.text,
                         );
 
-                        DBAdmin.db.insertBook(book).then(
-                          (value) {
+                        if(add){
+                          DBAdmin.db.insertBook(book).then(
+                                (value) {
+                              if (value > 0) {
+                                getData();
+                                Navigator.pop(context);
+                                _titleController.clear();
+                                _authorController.clear();
+                                _descriptionController.clear();
+                                _imageController.clear();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: const Color(0xff1eb880),
+                                    duration: const Duration(seconds: 3),
+                                    content: Row(
+                                      children: const [
+                                        Icon(
+                                          Icons.check,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            "El libro fue agregado correctamente",
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                          );
+                        }else{
+
+                          book.id = idBook;
+
+                          DBAdmin.db.updateBook(book).then((value){
                             if (value > 0) {
                               getData();
                               Navigator.pop(context);
@@ -177,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       Expanded(
                                         child: Text(
-                                          "El libro fue agregado correctamente",
+                                          "El libro fue actualizado correctamente",
                                         ),
                                       ),
                                     ],
@@ -185,8 +217,12 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               );
                             }
-                          },
-                        );
+                          });
+                        }
+
+
+
+
                       },
                       child: Text(
                         "Aceptar",
@@ -404,6 +440,7 @@ class _HomePageState extends State<HomePage> {
                         .map<Widget>(
                           (e) => GestureDetector(
                             onLongPress: (){
+                              idBook = e.id!;
                               _titleController.text = e.title;
                               _authorController.text = e.author;
                               _descriptionController.text = e.description;
