@@ -463,6 +463,9 @@ class _HomePageState extends State<HomePage> {
                       .map<Widget>(
                         (BookModel e) => ItemBookWidget(
                           model: e,
+                          onTap: (){
+                            print("Eliminar!!!!!!!");
+                          },
                         ),
                       )
                       .toList(),

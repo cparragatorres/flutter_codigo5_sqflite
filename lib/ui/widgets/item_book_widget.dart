@@ -9,6 +9,7 @@ class ItemBookWidget extends StatelessWidget {
   // String description;
 
   BookModel model;
+  Function onTap;
 
   ItemBookWidget({
     // required this.image,
@@ -16,6 +17,7 @@ class ItemBookWidget extends StatelessWidget {
     // required this.title,
     // required this.description,
     required this.model,
+    required this.onTap,
   });
 
   @override
@@ -69,7 +71,7 @@ class ItemBookWidget extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: (){
-
+                    onTap();
                   },
                   child: Text(
                     "Eliminar",

@@ -77,4 +77,18 @@ class DBAdmin {
   }
 
 
+  Future<int> deleteBookRaw() async{
+    final Database? db = await getCheckDatabase();
+    int res = await db!.rawDelete("DELETE FROM BOOK WHERE id = 1");
+    return res;
+  }
+
+  Future<int> deleteBook(int idBook) async{
+    final Database? db = await getCheckDatabase();
+    int res = await db!.delete("BOOK", where: "id = $idBook");
+    return res;
+  }
+
+
+
 }
