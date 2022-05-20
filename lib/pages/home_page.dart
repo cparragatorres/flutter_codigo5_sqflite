@@ -398,11 +398,16 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: books
                         .map<Widget>(
-                          (e) => ItemSliderWidget(
-                            // image: e.image,
-                            // title: e.title,
-                            // author: e.author,
-                            model: e,
+                          (e) => GestureDetector(
+                            onLongPress: (){
+                              _showForm();
+                            },
+                            child: ItemSliderWidget(
+                              // image: e.image,
+                              // title: e.title,
+                              // author: e.author,
+                              model: e,
+                            ),
                           ),
                         )
                         .toList(),
@@ -415,10 +420,11 @@ class _HomePageState extends State<HomePage> {
                   children: books
                       .map<Widget>(
                         (item) => ItemBookWidget(
-                          image: item.image,
-                          author: item.author,
-                          title: item.title,
-                          description: item.description,
+                          // image: item.image,
+                          // author: item.author,
+                          // title: item.title,
+                          // description: item.description,
+                          model: item,
                         ),
                       )
                       .toList(),
