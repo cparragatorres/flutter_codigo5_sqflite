@@ -399,9 +399,10 @@ class _HomePageState extends State<HomePage> {
                     children: books
                         .map<Widget>(
                           (e) => ItemSliderWidget(
-                            image: e.image,
-                            title: e.title,
-                            author: e.author,
+                            // image: e.image,
+                            // title: e.title,
+                            // author: e.author,
+                            model: e,
                           ),
                         )
                         .toList(),
