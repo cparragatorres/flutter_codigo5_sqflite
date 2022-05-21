@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite/db/db_admin.dart';
 import 'package:flutter_codigo5_sqflite/models/book_model.dart';
+import 'package:flutter_codigo5_sqflite/pages/detail_page.dart';
 import 'package:flutter_codigo5_sqflite/ui/utils/colors.dart';
 import 'package:flutter_codigo5_sqflite/ui/widgets/input_textfield_widget.dart';
 import 'package:flutter_codigo5_sqflite/ui/widgets/item_book_widget.dart';
@@ -543,6 +544,9 @@ class _HomePageState extends State<HomePage> {
                               _imageController.text = e.image;
                               _showForm(false);
                             },
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailPage()));
+                            },
                             child: ItemSliderWidget(
                               model: e,
                             ),
@@ -557,12 +561,17 @@ class _HomePageState extends State<HomePage> {
                 Column(
                   children: books
                       .map<Widget>(
-                        (BookModel e) => ItemBookWidget(
-                          model: e,
-                          onTap: () {
-                            idBook = e.id!;
-                            _showDeleteDialog();
+                        (BookModel e) => GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailPage()));
                           },
+                          child: ItemBookWidget(
+                            model: e,
+                            onTap: () {
+                              idBook = e.id!;
+                              _showDeleteDialog();
+                            },
+                          ),
                         ),
                       )
                       .toList(),
