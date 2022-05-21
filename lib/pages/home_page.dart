@@ -545,7 +545,7 @@ class _HomePageState extends State<HomePage> {
                               _showForm(false);
                             },
                             onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailPage(book: e,)));
                             },
                             child: ItemSliderWidget(
                               model: e,
@@ -563,7 +563,7 @@ class _HomePageState extends State<HomePage> {
                       .map<Widget>(
                         (BookModel e) => GestureDetector(
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailPage(book: e,)));
                           },
                           child: ItemBookWidget(
                             model: e,

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo5_sqflite/models/book_model.dart';
 import 'package:flutter_codigo5_sqflite/ui/utils/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  BookModel book;
+
+  DetailPage({
+    required this.book,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor,
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,8 +29,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      "https://i.pinimg.com/originals/5e/cc/64/5ecc64ef469ae2d5d3660ca7bde44ca0.jpg"),
+                  image: NetworkImage(book.image),
                 ),
               ),
             ),
@@ -42,7 +47,7 @@ class DetailPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Cien años de soledad",
+                    book.title,
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -61,7 +66,7 @@ class DetailPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Gabriel García Marquez",
+                    book.author,
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -89,11 +94,12 @@ class DetailPage extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                       fontSize: 14.0,
                     ),
-                  ),const SizedBox(
+                  ),
+                  const SizedBox(
                     height: 6.0,
                   ),
                   Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    book.description,
                     style: GoogleFonts.poppins(
                       color: Colors.white60,
                       fontWeight: FontWeight.w400,
