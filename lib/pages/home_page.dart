@@ -268,7 +268,9 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text(
                       "Cancelar",
                       style: GoogleFonts.poppins(
@@ -286,7 +288,36 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      DBAdmin.db.deleteBook(idBook).then((value){
+                        if(value >= 0){
+                          getData();
+                          Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: const Color(0xff1eb880),
+                              duration: const Duration(seconds: 3),
+                              content: Row(
+                                children: const [
+                                  Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      "El libro fue eliminado correctamente",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }
+                      });
+                    },
                     child: Text(
                       "Aceptar",
                       style: GoogleFonts.poppins(
@@ -529,6 +560,7 @@ class _HomePageState extends State<HomePage> {
                         (BookModel e) => ItemBookWidget(
                           model: e,
                           onTap: () {
+                            idBook = e.id!;
                             _showDeleteDialog();
                           },
                         ),
